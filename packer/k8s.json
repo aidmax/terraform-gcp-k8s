@@ -1,0 +1,20 @@
+{
+  "variables": {
+    "zone": "var",
+    "project_id": "var",
+    "service_account_json": "var"
+  },
+  
+  "builders": [
+    {
+      "type": "googlecompute",
+      "image_name": "packer-centos-7-{{timestamp}}",
+      "project_id": "{{user `project_id`}}",
+      "source_image": "centos-7-v20181210",
+      "source_image_family": "centos-7",
+      "ssh_username": "terraform",
+      "zone": "{{user `zone`}}",
+      "account_file": "{{ user `service_account_json`}}"
+    }
+  ]
+}
