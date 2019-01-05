@@ -13,3 +13,4 @@ export TF_VAR_project=${TF_ADMIN}
 export TF_VAR_region=${CLOUDSDK_COMPUTE_REGION}
 export TF_VAR_zone=${CLOUDSDK_COMPUTE_ZONE}
 export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
+export TF_VAR_ssh_user="your_ssh_key_username"
