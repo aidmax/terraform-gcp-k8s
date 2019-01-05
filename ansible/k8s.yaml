@@ -1,0 +1,34 @@
+---
+- name: Install Kubernetes
+  hosts: all
+  gather_facts: false
+  remote_user: packer
+  become: true
+  vars:
+    docker_yum_repo_url: https://download.docker.com/linux/centos/docker-ce.repo
+
+  tasks:
+    # Install Docker
+    - name: Add Docker GPG key
+      rpm_key:
+        key: https://download.docker.com/linux/centos/gpg
+        state: present
+
+    - name: Add Docker repository
+      get_url:
+        url: "{{ docker_yum_repo_url }}"
+        dest: '/etc/yum.repos.d/docker-ce.repo'
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Install Docker
+      package:
+        name: docker-ce
+        state: present
+
+    - name: Ensure Docker is started and enabled at boot
+      service:
+        name: docker
+        state: started
+        enabled: true

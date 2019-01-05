@@ -13,7 +13,11 @@ variable "zone" {
 }
 
 variable "ssh_public_key" {
-  description = "General ssh access key"
+  description = "Project wide ssh access key"
+}
+
+variable "ssh_user" {
+  description = "Project wide ssh access username"
 }
 
 

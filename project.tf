@@ -1,5 +1,5 @@
 resource "google_compute_project_metadata" "default" {
   metadata {
-    ssh-keys = "${file("${var.ssh_public_key}")}"
+    ssh-keys = "${var.ssh_user}:${file("${var.ssh_public_key}")}"
   }
 }
