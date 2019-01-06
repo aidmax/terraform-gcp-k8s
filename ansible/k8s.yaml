@@ -7,13 +7,13 @@
   vars:
     docker_yum_repo_url: https://download.docker.com/linux/centos/docker-ce.repo
     kubernetes_packages:
-      - name: kubelet
+      - name: kubelet-1.13.1
         state: present
-      - name: kubectl
+      - name: kubectl-1.13.1
         state: present
-      - name: kubeadm
+      - name: kubeadm-1.13.1
         state: present
-      - name: kubernetes-cni
+      - name: kubernetes-cni-0.6.0
         state: present
 
   tasks:

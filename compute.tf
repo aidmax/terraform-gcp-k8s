@@ -1,3 +1,7 @@
+data "google_compute_image" "k8s" {
+  family    = "k8s"
+}
+
 resource "google_compute_instance" "k8s-master" {
     name         = "k8s-master"
     machine_type = "n1-standard-1"

@@ -2,10 +2,7 @@
   "variables": {
     "zone": "var",
     "project_id": "var",
-    "service_account_json": "var",
-    "k8s_version": "1.9.4-00",
-    "cni_version": "0.6.0-00",
-    "docker_version":"17.03.2~ce-0~ubuntu-xenial"
+    "service_account_json": "var"
   },
   
   "builders": [
