@@ -24,10 +24,16 @@ test_yaml_files () {
   yamllint .
 }
 
+test_ansible_files () {
+  log "Testing ansible files"
+  ansible-lint .
+}
+
 main () {
   check_dependency shellcheck
   check_dependency python3
   check_dependency yamllint
+  check_dependency ansible-lint
   case $1 in
     shell)
         test_shell_files
@@ -35,9 +41,13 @@ main () {
     yaml)
         test_yaml_files
         ;;
+    ansible)
+        test_ansible_files
+        ;;
     *)
         test_shell_files
         test_yaml_files
+        test_ansible_files
         ;;
     esac
 }
