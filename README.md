@@ -1,67 +1,47 @@
 # Kubernetes cluster on Google Cloud
 
 This guide provides steps on how to setup a k8s cluster on Google Cloud Platform using Terraform, Packer and Ansible.
-It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google compute instances.
+It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google Cloud compute instances.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+#### Infra
+* Google Cloud Project has to be created with billing enabled. Free tier account would be enough for spinning up the cluster in this guide.
+* Google API service account with admin access to Cloud Compute Engine, see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. API account credentials JSON file must be downloaded and placed on your workstation.
+* Ssh key pair should be generated
 
+#### Software
+* [ gcloud ](https://cloud.google.com/sdk/install)
+* [ terraform ]
+* [ packer ]
+* [ ansible ]
+* [ direnv ] (optional)
 ```
-Give examples
+TBD
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+TBD
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+TBD
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+TBD
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Terraform](https://www.terraform.io) - Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently
+* [Packer](https://packer.io) - Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration
+* [Ansible](https://ansible.com) - Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+TBD
 
 ## Versioning
 
@@ -69,17 +49,11 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Maksim Milykh ** - *Initial work* - [aidmax](https://github.com/aidmax)
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* TBD
+* TBD
+* TBD
 
