@@ -24,6 +24,9 @@ For `us-central1` region monthly preemtible price is:
   interruption for the entire month. 
 See latest info [here](https://cloud.google.com/compute/pricing)
 
+By default, all the instances configured with preemtible schedule. You can
+change this in `is_preemtible` variable [here](variables.tf)
+
 ### Prerequisites
 
 #### Infra
