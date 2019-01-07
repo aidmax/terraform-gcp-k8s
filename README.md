@@ -1,7 +1,15 @@
 # Kubernetes cluster on Google Cloud
+> The guide is currently under construction.
+![under construction][underconstruction.png]
 
 This guide provides steps on how to setup a k8s cluster on Google Cloud Platform using Terraform, Packer and Ansible.
 It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google Cloud compute instances.
+
+### Overview
+The overall process looks as follows:
+1. Add your ssh public key to project level metadata, which allows your to connect and have sudo privileges on any project instance.
+2. Create a custom image with pre-installed docker and kubernetes packages based on Centos7 built-in Google Cloud compute image
+3. Spin up a kubernetes cluster in single master mode with 2 worker nodes.
 
 ### Prerequisites
 
@@ -15,6 +23,9 @@ It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google
 * [ terraform ](https://www.terraform.io/downloads.html)
 * [ packer ](https://www.packer.io/downloads.html)
 * [ ansible ](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [shellcheck](https://github.com/koalaman/shellcheck)
+* [yamllint](https://github.com/adrienverge/yamllint)
+* [Python3](https://www.python.org/downloads/)
 * [ direnv ](https://direnv.net) (optional)
 
 #### Environment variables
@@ -23,7 +34,7 @@ In order to handle credentials it is convenient to use some file with exports. [
 TBD
 ```
 
-### Installing
+## Installing
 
 TBD
 
