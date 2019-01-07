@@ -6,16 +6,19 @@ It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google
 ### Prerequisites
 
 #### Infra
-* Google Cloud Project has to be created with billing enabled. Free tier account would be enough for spinning up the cluster in this guide.
+* Google Cloud Project has to be created with billing enabled. [Free tier](https://cloud.google.com/free/) account would be enough for spinning up the cluster in this guide.
 * Google API service account with admin access to Cloud Compute Engine, see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. API account credentials JSON file must be downloaded and placed on your workstation.
 * Ssh key pair should be generated
 
 #### Software
 * [ gcloud ](https://cloud.google.com/sdk/install)
-* [ terraform ]
-* [ packer ]
-* [ ansible ]
-* [ direnv ] (optional)
+* [ terraform ](https://www.terraform.io/downloads.html)
+* [ packer ](https://www.packer.io/downloads.html)
+* [ ansible ](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [ direnv ](https://direnv.net) (optional)
+
+#### Environment variables
+In order to handle credentials it is convenient to use some file with exports. [ direnv ](https://direnv.net) utility can help to automate loading the environment variables when you chdir into some folder, [here is an example](envrc_example). Create *.envrc* file and adjust it according to your needs beforehand. Just do not forget to add the exclusion to [.gitignore](.gitignore) file.
 ```
 TBD
 ```
