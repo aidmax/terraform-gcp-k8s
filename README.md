@@ -3,20 +3,29 @@
 
 ![under construction]( underconstruction.png )
 
-This guide provides steps on how to setup a k8s cluster on Google Cloud Platform using Terraform, Packer and Ansible.
-It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google Cloud compute instances.
+This guide provides steps on how to setup a [Kubernetes](https://kubernetes.io)
+cluster on Google Cloud Platform using Terraform, Packer and Ansible.  It does
+not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google Cloud
+compute instances.
 
 ### Overview
 The overall process looks as follows:
-1. Add your ssh public key to project level metadata, which allows your to connect and have sudo privileges on any project instance.
-2. Create a custom image with pre-installed docker and kubernetes packages based on Centos7 built-in Google Cloud compute image
-3. Spin up a kubernetes cluster in single master mode with 2 worker nodes.
+1. Add your ssh public key to a project level metadata, which allows your to
+   connect and have sudo privileges on any instance within the project.
+2. Create a custom image with pre-installed Docker and Kubernetes packages based
+   on Centos-7 built-in Google Cloud compute image.
+3. Spin up a Kubernetes cluster in single master mode with 2 worker nodes.
 
 ### Prerequisites
 
 #### Infra
-* Google Cloud Project has to be created with billing enabled. [Free tier](https://cloud.google.com/free/) account would be enough for spinning up the cluster in this guide.
-* Google API service account with admin access to Cloud Compute Engine, see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. API account credentials JSON file must be downloaded and placed on your workstation.
+* Google Cloud Project has to be created with billing enabled. 
+  [Free tier](https://cloud.google.com/free/) account would be enough for
+  spinning up the cluster in this guide.
+* Google API service account with admin access to Cloud Compute Engine, 
+  see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. 
+  API account credentials JSON file must be downloaded and placed on your
+  workstation.
 * Ssh key pair should be generated
 
 #### Software
@@ -24,10 +33,13 @@ The overall process looks as follows:
 * [ terraform ](https://www.terraform.io/downloads.html)
 * [ packer ](https://www.packer.io/downloads.html)
 * [ ansible ](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [ direnv ](https://direnv.net) (optional)
+
+#### Testing related software
 * [shellcheck](https://github.com/koalaman/shellcheck)
 * [yamllint](https://github.com/adrienverge/yamllint)
+* [ansible-lint](https://github.com/ansible/ansible-lint)
 * [Python3](https://www.python.org/downloads/)
-* [ direnv ](https://direnv.net) (optional)
 
 #### Environment variables
 In order to handle credentials it is convenient to use some file with exports. [ direnv ](https://direnv.net) utility can help to automate loading the environment variables when you chdir into some folder, [here is an example](envrc_example). Create *.envrc* file and adjust it according to your needs beforehand. Just do not forget to add the exclusion to [.gitignore](.gitignore) file.
@@ -58,13 +70,9 @@ TBD
 
 TBD
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
 ## Authors
 
-* **Maksim Milykh ** - *Initial work* - [aidmax](https://github.com/aidmax)
+* **Maksim Milykh** - *Initial work* - [aidmax](https://github.com/aidmax)
 
 ## Acknowledgments
 

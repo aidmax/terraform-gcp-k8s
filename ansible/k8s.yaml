@@ -34,6 +34,10 @@
       rpm_key:
         key: https://download.docker.com/linux/centos/gpg
         state: present
+      register: task_result
+      until: task_result is success
+      retries: 3
+      delay: 2
 
     - name: Add Docker repository
       get_url:
@@ -74,6 +78,10 @@
       with_items:
         - https://packages.cloud.google.com/yum/doc/yum-key.gpg
         - https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+      register: task_result
+      until: task_result is success
+      retries: 3
+      delay: 2
 
     - name: Install Kubernetes packages
       package:
