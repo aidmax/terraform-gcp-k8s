@@ -45,7 +45,7 @@
 
     - name: Install Docker
       package:
-        name: docker-ce
+        name: docker-ce-18.06.1.ce
         state: present
 
     - name: Ensure Docker is started and enabled at boot
@@ -80,3 +80,9 @@
         name: "{{ item.name | default(item) }}"
         state: "{{ item.state | default('present') }}"
       with_items: "{{ kubernetes_packages }}"
+
+    - name: Set IP Tables config for Kubernetes Networking
+      sysctl:
+        name: net.bridge.bridge-nf-call-iptables
+        value: 1
+        state: present

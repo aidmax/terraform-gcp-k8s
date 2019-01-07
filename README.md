@@ -1,6 +1,7 @@
 # Kubernetes cluster on Google Cloud
 
 This guide provides steps on how to setup a k8s cluster on Google Cloud Platform using Terraform, Packer and Ansible.
+It does not utilize Google Kubernetes Engine (GKE) and rely explicitly on Google compute instances.
 
 ### Prerequisites
 

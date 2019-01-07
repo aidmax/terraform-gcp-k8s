@@ -3,11 +3,16 @@ data "google_compute_image" "k8s" {
 }
 
 resource "google_compute_instance" "k8s-master" {
-    name         = "k8s-master"
-    machine_type = "n1-standard-1"
+    count = 1
+
+    name         = "k8s-master-${count.index}"
+    machine_type = "n1-standard-2"
     zone         = "${var.zone}"
 
     tags = ["k8s-master"]
+    
+    allow_stopping_for_update = "true"
+    can_ip_forward = "true"
 
     boot_disk {
         initialize_params {
@@ -19,15 +24,11 @@ resource "google_compute_instance" "k8s-master" {
 
     network_interface {
         network            = "default"
-        //subnetwork_project = "${var.subnetwork_project}"
 
         access_config {
             // Ephemeral IP
         }
     }
 
-    //service_account {
-     //  scopes = ["${var.sa_stg_write}"]
-    //}
 }
 
