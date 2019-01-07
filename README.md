@@ -18,14 +18,15 @@ The overall process looks as follows:
 
 ### Costs
 For `us-central1` region monthly preemtible price is:
-* n1-standard-2 instance (master) -  **$14.60**
+* n1-standard-2 instance (master) -  *$14.60*
 * f1-micro instance (nodes) - you receive free usage equivalent to the number of
   total hours within the current month, enough to run one instance without
   interruption for the entire month. 
-See latest info [here](https://cloud.google.com/compute/pricing)
+
+See complete pricing info [here](https://cloud.google.com/compute/pricing)
 
 By default, all the instances configured with preemtible schedule. You can
-change this in `is_preemtible` variable [here](variables.tf)
+change it in `is_preemtible`variable [here](variables.tf)
 
 ### Prerequisites
 
