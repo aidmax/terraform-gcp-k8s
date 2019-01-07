@@ -34,11 +34,24 @@ resource "google_compute_instance" "k8s-master" {
         preemptible       = "${var.is_preemptible}"
         automatic_restart = false
     }
+    provisioner "remote-exec" {
+      inline = [
+        "set -e",
+        "sudo kubeadm init",
+        "mkdir -p $HOME/.kube && sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config && sudo chown $(id -u):$(id -g) $HOME/.kube/config",
+        "kubectl apply -f \"https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')\"",
+      ]
+
+      connection {
+        user    = "${var.ssh_user}"
+        timeout = "300s"
+      }
+    }
 
 }
 
 resource "google_compute_instance" "k8s-node" {
-    count = 2
+    count = 1
 
     name         = "k8s-node-${count.index}"
     machine_type = "f1-micro"

@@ -45,6 +45,7 @@ change it in `is_preemtible`variable [here](variables.tf)
 * [ terraform ](https://www.terraform.io/downloads.html)
 * [ packer ](https://www.packer.io/downloads.html)
 * [ ansible ](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+* [jq](https://stedolan.github.io/jq/)
 * [ direnv ](https://direnv.net) (optional)
 
 #### Testing related software
@@ -70,7 +71,12 @@ export TF_VAR_project=${TF_ADMIN}
 export TF_VAR_region=${CLOUDSDK_COMPUTE_REGION}
 export TF_VAR_zone=${CLOUDSDK_COMPUTE_ZONE}
 export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
+export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
 export TF_VAR_ssh_user="your_ssh_key_username"
+```
+In case of using `direnv`, allow it to update your environment variables:
+```bash
+direnv allow
 ```
 #### Remote backend configuration
 You can store terraform backend file either in the repository root or inside a
