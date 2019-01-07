@@ -29,6 +29,11 @@ resource "google_compute_instance" "k8s-master" {
             // Ephemeral IP
         }
     }
+    
+    scheduling {
+        preemptible       = "${var.is_preemptible}"
+        automatic_restart = false
+    }
 
 }
 
@@ -60,4 +65,8 @@ resource "google_compute_instance" "k8s-node" {
         }
     }
 
+    scheduling {
+        preemptible       = "${var.is_preemptible}"
+        automatic_restart = false
+    }
 }

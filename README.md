@@ -16,6 +16,14 @@ The overall process looks as follows:
    on Centos-7 built-in Google Cloud compute image.
 3. Spin up a Kubernetes cluster in single master mode with 2 worker nodes.
 
+### Costs
+For `us-central1` region monthly preemtible price is:
+* n1-standard-2 instance (master) -  **$14.60**
+* f1-micro instance (nodes) - you receive free usage equivalent to the number of
+  total hours within the current month, enough to run one instance without
+  interruption for the entire month. 
+See latest info [here](https://cloud.google.com/compute/pricing)
+
 ### Prerequisites
 
 #### Infra

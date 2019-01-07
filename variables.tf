@@ -20,4 +20,9 @@ variable "ssh_user" {
   description = "Project wide ssh access username"
 }
 
+variable "is_preemptible" {
+  description = "Short-lived VM instance, more affordable, last for up to 24 hours"
+  default = true
+}
+
 
