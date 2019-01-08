@@ -123,7 +123,9 @@ terraform apply
 TBD
 
 
-## Deployment
+## Implementation details
+Here some details which you may find useful:
+* Terraform creates a VM based on the image linked via image_family `k8s` and retrieves the latest image for this family. So, whenever you update your image `terraform plan` and `terraform apply` commands will force you to re-create the cluster. 
 
 TBD
 
