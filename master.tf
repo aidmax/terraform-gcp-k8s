@@ -3,6 +3,7 @@ data "google_compute_image" "k8s" {
 }
 
 resource "google_compute_instance" "k8s-master" {
+
     count = 1
 
     name         = "k8s-master-${count.index}"
@@ -34,6 +35,7 @@ resource "google_compute_instance" "k8s-master" {
         preemptible       = "${var.is_preemptible}"
         automatic_restart = false
     }
+
     provisioner "remote-exec" {
       inline = [
         "set -e",
@@ -47,39 +49,17 @@ resource "google_compute_instance" "k8s-master" {
         timeout = "300s"
       }
     }
-
 }
 
-resource "google_compute_instance" "k8s-node" {
-    count = 1
+data "external" "kubeadm_join" {
 
-    name         = "k8s-node-${count.index}"
-    machine_type = "f1-micro"
-    zone         = "${var.zone}"
+  program = ["${path.module}/scripts/kubeadm-token.sh"]
 
-    tags = ["k8s-master"]
-    
-    allow_stopping_for_update = "true"
-    can_ip_forward = "true"
+  query = {
+    host     = "${google_compute_instance.k8s-master.network_interface.0.access_config.0.nat_ip}"
+    ssh_user = "${var.ssh_user}"
+    key      = "${var.ssh_private_key}"
+  }
 
-    boot_disk {
-        initialize_params {
-            image = "${data.google_compute_image.k8s.self_link}"
-            size  = 10
-            type  = "pd-standard"
-        }
-    }
-
-    network_interface {
-        network            = "default"
-
-        access_config {
-            // Ephemeral IP
-        }
-    }
-
-    scheduling {
-        preemptible       = "${var.is_preemptible}"
-        automatic_restart = false
-    }
+  depends_on = ["google_compute_instance.k8s-master"]
 }

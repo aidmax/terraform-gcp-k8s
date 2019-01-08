@@ -9,6 +9,10 @@ provider "google" {
   zone    = "${var.zone}"
 }
 
+provider "external" {
+  version = "1.0.0"
+}
+
 resource "google_compute_project_metadata" "default" {
   metadata {
     ssh-keys = "${var.ssh_user}:${file("${var.ssh_public_key}")}"

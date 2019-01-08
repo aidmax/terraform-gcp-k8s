@@ -13,8 +13,10 @@ The overall process looks as follows:
 1. Add your ssh public key to a project level metadata, which allows your to
    connect and have sudo privileges on any instance within the project.
 2. Create a custom image with pre-installed Docker and Kubernetes packages based
-   on Centos-7 built-in Google Cloud compute image.
-3. Spin up a Kubernetes cluster in single master mode with 2 worker nodes.
+   on Centos-7 built-in Google Cloud compute image. The image contains docker
+   and k8s packages installed using Ansible playbook.
+3. Spin up a Kubernetes cluster based on the image in single master mode with 2
+   worker nodes.
 
 ### Costs
 For `us-central1` region monthly preemtible price is:
@@ -25,10 +27,10 @@ For `us-central1` region monthly preemtible price is:
 
 See complete pricing info [here](https://cloud.google.com/compute/pricing)
 
-By default, all the instances configured with preemtible schedule. You can
-change it in `is_preemtible`variable [here](variables.tf)
+By default, all the instances configured with preemtible schedule to reduce
+overall cost. You can change it in `is_preemtible`variable [here](variables.tf)
 
-### Prerequisites
+### Pre-Requisites
 
 #### Infra
 * Google Cloud Project has to be created with billing enabled. 
@@ -38,7 +40,7 @@ change it in `is_preemtible`variable [here](variables.tf)
   see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. 
   API account credentials JSON file must be downloaded and placed on your
   workstation.
-* Ssh key pair should be generated
+* SSH key pair should be generated in advance
 
 #### Software
 * [ gcloud ](https://cloud.google.com/sdk/install)
@@ -71,7 +73,7 @@ export TF_VAR_project=${TF_ADMIN}
 export TF_VAR_region=${CLOUDSDK_COMPUTE_REGION}
 export TF_VAR_zone=${CLOUDSDK_COMPUTE_ZONE}
 export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
-export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
+export TF_VAR_ssh_private_key="$HOME/.ssh/your_ssh_private_key_filename"
 export TF_VAR_ssh_user="your_ssh_key_username"
 ```
 In case of using `direnv`, allow it to update your environment variables:
@@ -100,7 +102,22 @@ EOF
 ```
 ## Installing
 
-TBD
+```bash
+# Perform pre-requisites steps
+
+# Clone this repo
+git clone https://github.com/aidmax/gcp_terraform
+
+# Create an image
+cd packer
+./build.sh
+
+# Init terraform
+cd ..
+terraform init
+terraform plan
+terraform apply
+```
 
 ## Running the tests
 
@@ -116,6 +133,9 @@ TBD
 * [Terraform](https://www.terraform.io) - Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently
 * [Packer](https://packer.io) - Packer is an open source tool for creating identical machine images for multiple platforms from a single source configuration
 * [Ansible](https://ansible.com) - Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs
+
+## TODO
+* reserve static ip address for master using [this](https://www.terraform.io/docs/providers/google/r/compute_address.html)
 
 ## Contributing
 
