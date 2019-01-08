@@ -12,9 +12,8 @@ compute instances.
 The overall process looks as follows:
 1. Add your ssh public key to a project level metadata, which allows your to
    connect and have sudo privileges on any instance within the project.
-2. Create a custom image with pre-installed Docker and Kubernetes packages based
-   on Centos-7 built-in Google Cloud compute image. The image contains docker
-   and k8s packages installed using Ansible playbook.
+2. Create a custom CentOS-7 image with pre-installed Docker and Kubernetes
+   packages using Ansible playbook.
 3. Spin up a Kubernetes cluster based on the image in single master mode with 2
    worker nodes.
 
