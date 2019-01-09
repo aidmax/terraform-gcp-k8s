@@ -49,6 +49,11 @@ overall cost. You can change it in `is_preemtible`variable [here](variables.tf)
 * [jq](https://stedolan.github.io/jq/)
 * [ direnv ](https://direnv.net) (optional)
 
+You can install those on Mac using next oneliner:
+```bash
+brew install terraform packer ansible jq direnv
+```
+
 #### Testing related software
 * [shellcheck](https://github.com/koalaman/shellcheck)
 * [yamllint](https://github.com/adrienverge/yamllint)
@@ -56,8 +61,8 @@ overall cost. You can change it in `is_preemtible`variable [here](variables.tf)
 * [Python3](https://www.python.org/downloads/)
 
 #### Environment variables
-In order to handle credentials it is convenient to use some file with exports. [ direnv ](https://direnv.net) utility can help to automate loading the environment variables when you chdir into some folder, [here is an example](envrc_example). Create *.envrc* file and adjust it according to your needs beforehand. Just do not forget to add the exclusion to [.gitignore](.gitignore) file.
-The .envcr file should consist of the following:
+In order to handle credentials it is convenient to use some file with exports. [ direnv ](https://direnv.net) utility can help to automate loading the environment variables when you chdir into some folder, [here is an example](envrc_example). Create *.envrc* file and adjust it according to your needs beforehand. Just do not forget to add the exclusion to [.gitignore](.gitignore) file. 
+The .envcr file should contain the following:
 ```bash
 export TF_ADMIN="your_project_name"
 export TF_CREDS="$HOME/your_service_account_filename.json"
@@ -75,7 +80,12 @@ export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
 export TF_VAR_ssh_private_key="$HOME/.ssh/your_ssh_private_key_filename"
 export TF_VAR_ssh_user="your_ssh_key_username"
 ```
-In case of using `direnv`, allow it to update your environment variables:
+In case of using `direnv` add the following line at the end of the ~/.bashrc or
+.bash_profile file:
+```bash
+eval "$(direnv hook bash)"
+```
+and allow it to update your environment variables:
 ```bash
 direnv allow
 ```
@@ -125,7 +135,7 @@ TBD
 
 ## Implementation details
 Here some details which you may find useful:
-* Terraform creates a VM based on the image linked via image_family `k8s` and retrieves the latest image for this family. So, whenever you update your image `terraform plan` and `terraform apply` commands will force you to re-create the cluster. 
+* Terraform creates a VM based on the image linked via image_family `k8s` and retrieves the latest by default. So, whenever you update the image `terraform plan` and `terraform apply` commands will force you to re-create the cluster. 
 
 TBD
 
