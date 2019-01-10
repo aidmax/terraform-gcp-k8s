@@ -121,7 +121,7 @@ to check that `ssh-add -l` or `ssh-add -L`
 # Perform pre-requisites steps
 
 # Clone this repo
-git clone https://github.com/aidmax/gcp_terraform
+git clone git@github.com:aidmax/terraform-gcp-k8s.git
 
 # Create an image
 cd packer
