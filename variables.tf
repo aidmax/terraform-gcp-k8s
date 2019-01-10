@@ -24,6 +24,10 @@ variable "ssh_user" {
   description = "Project wide ssh access username"
 }
 
+variable "nodes" {
+  description = "How many worker nodes should be created"
+  default = 2
+}
 variable "is_preemptible" {
   description = "Short-lived VM instance, more affordable, last for up to 24 hours"
   default = true

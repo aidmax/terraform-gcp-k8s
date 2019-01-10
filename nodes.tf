@@ -1,5 +1,6 @@
 resource "google_compute_instance" "k8s-node" {
-    count = 1
+
+    count = "${var.nodes}"
 
     name         = "k8s-node-${count.index}"
     machine_type = "f1-micro"
