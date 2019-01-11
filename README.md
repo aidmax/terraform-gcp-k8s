@@ -1,7 +1,5 @@
 # Kubernetes cluster on Google Cloud
-> The guide is currently under construction!
 
-![under construction]( underconstruction.png )
 
 This guide provides steps on how to setup a [Kubernetes](https://kubernetes.io)
 cluster on Google Cloud Platform using Terraform, Packer and Ansible.  It does
