@@ -11,7 +11,7 @@ The overall process looks as follows:
 1. Add your ssh public key to a project level metadata, which allows your to
    connect and have sudo privileges on any instance within the project.
 2. Create a custom CentOS-7 image with pre-installed Docker and Kubernetes
-   packages using Ansible playbook.
+   packages using Packer and Ansible playbook.
 3. Spin up a bunch of compute instances and provision a minimal viable
    Kubernetes cluster based on that image. Cluster creation is done in single
    master mode with 2 workers using [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) utility.
@@ -37,7 +37,7 @@ overall cost. You can change it in `is_preemtible`variable [here](variables.tf)
 * Google Cloud Project has to be created with billing enabled. 
 * Google API service account with admin access to Cloud Compute Engine, 
   see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. 
-  API account credentials JSON file must be downloaded and placed on your
+  API account credentials JSON file has to be downloaded and placed on your
   workstation.
 * SSH key pair should be generated in advance
 
@@ -124,12 +124,16 @@ to check that `ssh-add -l` or `ssh-add -L`
 # Clone this repo
 git clone git@github.com:aidmax/terraform-gcp-k8s.git
 
-# Create an image
+# Create an image and push it to GCP
 cd terraform-gcp-k8s/packer
 ./build.sh
 
-# Init terraform
+# Chdir to repo root
 cd ..
+
+# (Optional) Setup remote backend (see above)
+
+# Init terraform
 terraform init
 terraform plan
 terraform apply
@@ -137,14 +141,11 @@ terraform apply
 
 ## Running the tests
 
-TBD
-
+TDB
 
 ## Implementation details
 Here some details which you may find useful:
 * Terraform creates a VM based on the image linked via image_family `k8s` and retrieves the latest by default. So, whenever you update the image `terraform plan` and `terraform apply` commands will force you to re-create the cluster. 
-
-TBD
 
 ## Built With
 
@@ -154,6 +155,10 @@ TBD
 
 ## TODO
 * reserve static ip address for master using [this](https://www.terraform.io/docs/providers/google/r/compute_address.html)
+
+## License
+MIT
+See [LICENSE](LICENSE)
 
 ## Contributing
 
