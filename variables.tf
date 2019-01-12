@@ -1,6 +1,6 @@
 // Project related veriables
 
-variable "project"{
+variable "project" {
   description = "Project to provision"
 }
 
@@ -26,11 +26,10 @@ variable "ssh_user" {
 
 variable "nodes" {
   description = "How many worker nodes should be created"
-  default = 2
+  default     = 2
 }
+
 variable "is_preemptible" {
   description = "Short-lived VM instance, more affordable, last for up to 24 hours"
-  default = true
+  default     = true
 }
-
-

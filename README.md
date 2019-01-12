@@ -35,7 +35,6 @@ overall cost. You can change it in `is_preemtible`variable [here](variables.tf)
 
 #### Infra
 * Google Cloud Project has to be created with billing enabled. 
-  
 * Google API service account with admin access to Cloud Compute Engine, 
   see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. 
   API account credentials JSON file must be downloaded and placed on your
@@ -125,7 +124,7 @@ to check that `ssh-add -l` or `ssh-add -L`
 git clone git@github.com:aidmax/terraform-gcp-k8s.git
 
 # Create an image
-cd packer
+cd terraform-gcp-k8s/packer
 ./build.sh
 
 # Init terraform
