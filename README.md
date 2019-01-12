@@ -12,8 +12,9 @@ The overall process looks as follows:
    connect and have sudo privileges on any instance within the project.
 2. Create a custom CentOS-7 image with pre-installed Docker and Kubernetes
    packages using Ansible playbook.
-3. Spin up a Kubernetes cluster based on the image in single master mode with 2
-   worker nodes.
+3. Spin up a bunch of compute instances and provision a minimal viable
+   Kubernetes cluster based on that image. Cluster creation is done in single
+   master mode with 2 workers using [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) utility.
 
 ### Costs
 For `us-central1` region monthly preemtible price is:
@@ -21,6 +22,9 @@ For `us-central1` region monthly preemtible price is:
 * f1-micro instance (nodes) - you receive free usage equivalent to the number of
   total hours within the current month, enough to run one instance without
   interruption for the entire month. 
+
+[Free tier](https://cloud.google.com/free/) account would be enough for spinning
+up the cluster in this guide.
 
 See complete pricing info [here](https://cloud.google.com/compute/pricing)
 
@@ -31,8 +35,7 @@ overall cost. You can change it in `is_preemtible`variable [here](variables.tf)
 
 #### Infra
 * Google Cloud Project has to be created with billing enabled. 
-  [Free tier](https://cloud.google.com/free/) account would be enough for
-  spinning up the cluster in this guide.
+  
 * Google API service account with admin access to Cloud Compute Engine, 
   see [this guide](https://cloud.google.com/community/tutorials/managing-gcp-projects-with-terraform) on how do that. 
   API account credentials JSON file must be downloaded and placed on your
