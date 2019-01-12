@@ -89,12 +89,13 @@ and allow it to update your environment variables:
 ```bash
 direnv allow
 ```
-#### Remote backend configuration
+#### Remote backend configuration (optional)
 You can store terraform backend file either in the repository root or inside a
 remote storage in GCP. The second is a bit more convenient if you're going to
 use this from different workstations or along with some other contributors.  
 
-To create a remote backend storage perform the commands:
+To create a remote backend storage perform the following commands in repository
+root **after** git clone (see `Installing` section below):
 ```bash
 gsutil mb -p ${TF_ADMIN} gs://${TF_ADMIN}
 gsutil versioning set on gs://${TF_ADMIN}
@@ -118,7 +119,7 @@ to check that `ssh-add -l` or `ssh-add -L`
 ## Installing
 
 ```bash
-# Perform pre-requisites steps
+# Perform pre-requisite steps
 
 # Clone this repo
 git clone git@github.com:aidmax/terraform-gcp-k8s.git
