@@ -125,11 +125,7 @@ to check that `ssh-add -l` or `ssh-add -L`
 git clone git@github.com:aidmax/terraform-gcp-k8s.git
 
 # Create an image and push it to GCP
-cd terraform-gcp-k8s/packer
-./build.sh
-
-# Chdir to repo root
-cd ..
+packer/build.sh
 
 # (Optional) Setup remote backend (see above)
 
@@ -137,11 +133,16 @@ cd ..
 terraform init
 terraform plan
 terraform apply
+
+# Cleaning up (deleting cluster)
+terraform destroy
 ```
 
 ## Running the tests
 
-TDB
+Using `test.sh` file located in repository root you can make some basic linting
+and formatting corrections. This script requires testing utilities installed,
+see pre-requisites [ above ](#Testing related software).
 
 ## Implementation details
 Here some details which you may find useful:
