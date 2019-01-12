@@ -142,7 +142,7 @@ terraform destroy
 
 Using `test.sh` file located in repository root you can make some basic linting
 and formatting corrections. This script requires testing utilities installed,
-see pre-requisites [ above ](#Testing related software).
+see pre-requisites [ above ](#testing-related-software).
 
 ## Implementation details
 Here some details which you may find useful:
@@ -159,6 +159,7 @@ Here some details which you may find useful:
 
 ## License
 MIT
+
 See [LICENSE](LICENSE)
 
 ## Contributing
