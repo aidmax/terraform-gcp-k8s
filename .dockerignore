@@ -5,3 +5,4 @@
 *.terraform.tfstate.lock.info
 backend.tf
 .git
+.travis.yml
