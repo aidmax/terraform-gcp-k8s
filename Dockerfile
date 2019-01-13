@@ -18,7 +18,8 @@ RUN apk add --no-cache curl unzip bash python py-pip git openssh libffi-dev jq g
 # Install Terraform
 RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /usr/local/bin && \
-    rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+    rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+    terraform init
 
 # Install Packer
 RUN curl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip -o packer_${PACKER_VERSION}_linux_amd64.zip && \
