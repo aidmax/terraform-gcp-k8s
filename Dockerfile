@@ -24,7 +24,7 @@ RUN apk add --no-cache \
     libffi-dev \
     jq && \
     apk --no-cache add --virtual=build gcc libffi-dev musl-dev openssl-dev python-dev python3-dev make && \
-    pip install pip==${PIP_VERSION} &&
+    pip install pip==${PIP_VERSION}
     
 # Install Terraform
 RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
