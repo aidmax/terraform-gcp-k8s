@@ -2,4 +2,4 @@ services:
   - docker
 
 before_install:
-  - docker build -t aidmax/terraform-gcp-k8s . 
+  - docker build -t aidmax/terraform-gcp-k8s .
