@@ -4,6 +4,7 @@ MAINTAINER Maksim Milykh <aidmax@mail.ru>
 
 ENV TERRAFORM_VERSION=0.11.10
 ENV PACKER_VERSION=1.3.3
+ENV PIP_VERSION=18.0
 
 COPY . /workspace/
 WORKDIR /workspace
@@ -21,7 +22,8 @@ RUN apk add --no-cache \
     openssl \
     make \
     libffi-dev \
-    jq  
+    jq && \
+    pip install pip==${PIP_VERSION}
     
 # Install Terraform
 RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
