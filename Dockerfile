@@ -11,18 +11,7 @@ WORKDIR /workspace
 
 USER root
 
-RUN apk add --no-cache \
-    curl \
-    unzip \
-    bash \
-    python \
-    py-pip \
-    git \
-    openssh \
-    openssl \
-    make \
-    libffi-dev \
-    jq && \
+RUN apk add --no-cache curl unzip bash python py-pip git openssh libffi-dev jq grep && \
     apk --no-cache add --virtual=build gcc libffi-dev musl-dev openssl-dev python-dev python3-dev make && \
     pip install pip==${PIP_VERSION}
     
