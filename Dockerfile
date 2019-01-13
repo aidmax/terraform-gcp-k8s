@@ -18,6 +18,7 @@ RUN apk add --no-cache \
     py-pip \
     git \
     openssh \
+    openssl \
     make \
     libffi-dev \
     jq  
@@ -32,5 +33,16 @@ RUN curl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER
     unzip packer_${PACKER_VERSION}_linux_amd64.zip -d /usr/local/bin && \
     rm -f packer_${PACKER_VERSION}_linux_amd64.zip  && \
     ln -s /usr/local/bin/packer /usr/local/bin/packer-io
+
+# Install shellcheck
+RUN wget https://storage.googleapis.com/shellcheck/shellcheck-latest.linux.x86_64.tar.xz && \
+    tar xvfJ shellcheck-latest.linux.x86_64.tar.xz && \
+    chmod +x shellcheck-latest/shellcheck && \
+    mv shellcheck-latest/shellcheck /usr/bin/shellcheck && \
+    rm shellcheck-latest.linux.x86_64.tar.xz && \
+    rm -rf shellcheck-latest
+
+# Install yamllint and ansible-lint
+RUN pip install yamllint ansible-lint
 
 RUN ./test.sh    

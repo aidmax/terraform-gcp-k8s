@@ -40,7 +40,7 @@ format_terraform_files () {
 }
 main () {
   check_dependency shellcheck
-  check_dependency python3
+  # check_dependency python3
   check_dependency yamllint
   check_dependency ansible-lint
   case $1 in
