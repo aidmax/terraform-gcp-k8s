@@ -24,6 +24,10 @@ variable "ssh_user" {
   description = "Project wide ssh access username"
 }
 
+variable "admin_wan_ip" {
+  description = "External IP of k8s admin"
+}
+
 variable "nodes" {
   description = "How many worker nodes should be created"
   default     = 2
