@@ -1,4 +1,5 @@
 # Kubernetes cluster on Google Cloud
+[![Build Status](https://travis-ci.com/aidmax/terraform-gcp-k8s.svg?branch=master)](https://travis-ci.com/aidmax/terraform-gcp-k8s)
 
 
 This guide provides steps on how to setup a [Kubernetes](https://kubernetes.io)
