@@ -31,7 +31,7 @@ test_ansible_files () {
 
 test_terraform_files () {
   log "Testing terraform files"
-  find . -type f -name "*.tf" -print0 | xargs -0 terraform validate
+  find . -type f -name "*.tf" -print0 | xargs -0 terraform validate -check-variables=false
 }
 
 format_terraform_files () {
