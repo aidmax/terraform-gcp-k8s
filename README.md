@@ -80,6 +80,7 @@ export TF_VAR_zone=${CLOUDSDK_COMPUTE_ZONE}
 export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
 export TF_VAR_ssh_private_key="$HOME/.ssh/your_ssh_private_key_filename"
 export TF_VAR_ssh_user="your_ssh_key_username"
+export TF_VAR_admin_wan_ip=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 ```
 In case of using `direnv` add the following line at the end of the ~/.bashrc or
 .bash_profile file:
