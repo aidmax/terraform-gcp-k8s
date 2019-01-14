@@ -5,7 +5,7 @@ resource "google_compute_instance" "k8s-node" {
   machine_type = "f1-micro"
   zone         = "${var.zone}"
 
-  tags = ["k8s-master"]
+  tags = ["k8s-node"]
 
   allow_stopping_for_update = "true"
   can_ip_forward            = "true"

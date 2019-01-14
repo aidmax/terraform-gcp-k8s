@@ -1,4 +1,5 @@
 # Kubernetes cluster on Google Cloud
+[![Build Status](https://travis-ci.com/aidmax/terraform-gcp-k8s.svg?branch=master)](https://travis-ci.com/aidmax/terraform-gcp-k8s)
 
 
 This guide provides steps on how to setup a [Kubernetes](https://kubernetes.io)
@@ -79,6 +80,7 @@ export TF_VAR_zone=${CLOUDSDK_COMPUTE_ZONE}
 export TF_VAR_ssh_public_key="$HOME/.ssh/your_ssh_public_key_filename.pub"
 export TF_VAR_ssh_private_key="$HOME/.ssh/your_ssh_private_key_filename"
 export TF_VAR_ssh_user="your_ssh_key_username"
+export TF_VAR_admin_wan_ip=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 ```
 In case of using `direnv` add the following line at the end of the ~/.bashrc or
 .bash_profile file:
@@ -125,11 +127,7 @@ to check that `ssh-add -l` or `ssh-add -L`
 git clone git@github.com:aidmax/terraform-gcp-k8s.git
 
 # Create an image and push it to GCP
-cd terraform-gcp-k8s/packer
-./build.sh
-
-# Chdir to repo root
-cd ..
+packer/build.sh
 
 # (Optional) Setup remote backend (see above)
 
@@ -137,11 +135,16 @@ cd ..
 terraform init
 terraform plan
 terraform apply
+
+# Cleaning up (deleting cluster)
+terraform destroy
 ```
 
 ## Running the tests
 
-TDB
+Using `test.sh` file located in repository root you can make some basic linting
+and formatting corrections. This script requires testing utilities installed,
+see pre-requisites [ above ](#testing-related-software).
 
 ## Implementation details
 Here some details which you may find useful:
@@ -158,6 +161,7 @@ Here some details which you may find useful:
 
 ## License
 MIT
+
 See [LICENSE](LICENSE)
 
 ## Contributing

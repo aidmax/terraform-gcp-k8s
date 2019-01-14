@@ -1,0 +1,8 @@
+.terraform
+.envrc
+*.tfstate
+*.tfstate.backup
+*.terraform.tfstate.lock.info
+backend.tf
+.git
+.travis.yml
