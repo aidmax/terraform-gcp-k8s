@@ -2,6 +2,8 @@
 
 set -e
 
+declare TF_VAR_ssh_user
+
 # Loading environment variables
 source .envrc
 
