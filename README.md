@@ -157,7 +157,11 @@ Here some details which you may find useful:
 * [Ansible](https://ansible.com) - Ansible is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs
 
 ## TODO
-* reserve static ip address for master using [this](https://www.terraform.io/docs/providers/google/r/compute_address.html)
+
+* reserve static ip address for the master node
+* use GCP instance groups
+* add a script to establish ssh tunnel for remote kubectl
+* add [Heketi](https://github.com/gluster/gluster-kubernetes/blob/master/docs/setup-guide.md)
 
 ## License
 MIT
@@ -174,7 +178,5 @@ TBD
 
 ## Acknowledgments
 
-* TBD
-* TBD
 * TBD
 
