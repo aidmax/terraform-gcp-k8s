@@ -23,10 +23,11 @@ resource "google_compute_instance" "k8s-master" {
   }
 
   network_interface {
-    network = "default"
+    network    = "default"
+    network_ip = "${google_compute_address.k8s-master-ip-int.address}"
 
     access_config {
-      // Ephemeral IP
+      nat_ip = "${google_compute_address.k8s-master-ip-ext.address}"
     }
   }
 
