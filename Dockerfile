@@ -28,7 +28,7 @@ RUN curl https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER
     ln -s /usr/local/bin/packer /usr/local/bin/packer-io
 
 # Install shellcheck
-RUN wget https://storage.googleapis.com/shellcheck/shellcheck-latest.linux.x86_64.tar.xz && \
+RUN wget https://github.com/koalaman/shellcheck/releases/download/latest/shellcheck-latest.linux.x86_64.tar.xz && \
     tar xvfJ shellcheck-latest.linux.x86_64.tar.xz && \
     chmod +x shellcheck-latest/shellcheck && \
     mv shellcheck-latest/shellcheck /usr/bin/shellcheck && \
