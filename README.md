@@ -62,7 +62,7 @@ brew install terraform packer ansible jq direnv
 * [Python3](https://www.python.org/downloads/)
 
 #### Environment variables
-In order to handle credentials it is convenient to use some file with exports. [ direnv ](https://direnv.net) utility can help to automate loading the environment variables when you chdir into some folder, [here is an example](envrc_example). Create *.envrc* file and adjust it according to your needs beforehand. Just do not forget to add the exclusion to [.gitignore](.gitignore) file. 
+In order to handle credentials it is convenient to use some file with your environement variables. [ direnv ](https://direnv.net) utility can help to automate loading the environment variables when you chdir into some folder, [here is an example](envrc_example). Create *.envrc* file and adjust it according to your needs beforehand. Just do not forget to add the exclusion to [.gitignore](.gitignore) file. 
 The .envcr file should contain the following:
 ```bash
 export TF_ADMIN="your_project_name"
